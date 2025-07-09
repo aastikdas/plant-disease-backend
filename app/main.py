@@ -9,7 +9,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
     "http://localhost:5173",  # Vite local dev
-    "https://plant-disease-frontend-psi.vercel.app/",
+    "https://plant-disease-detection-aastik.vercel.app/",
     ],
     allow_credentials=True,
     allow_methods=["*"],
