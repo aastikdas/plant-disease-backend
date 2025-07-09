@@ -10,6 +10,7 @@ load_dotenv()
 
 MODEL_PATH = os.getenv("MODEL_PATH")
 DRIVE_FILE_ID = os.getenv("DRIVE_FILE_ID")
+os.makedirs(MODEL_DIR, exist_ok=True)
 
 if not os.path.exists(MODEL_PATH):
     gdown.download(f"https://drive.google.com/uc?id={DRIVE_FILE_ID}", MODEL_PATH, quiet=False)
