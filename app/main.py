@@ -7,7 +7,10 @@ app = FastAPI()
 # CORS for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # change to your frontend URL in production
+    allow_origins=[
+    "http://localhost:5173",  # Vite local dev
+    "https://plant-disease-frontend-psi.vercel.app/",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
