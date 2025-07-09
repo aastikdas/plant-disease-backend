@@ -4,18 +4,28 @@ from dotenv import load_dotenv
 from PIL import Image
 import numpy as np
 import io
-import os, gdown, tensorflow as tf
+import os
+import gdown
+import tensorflow as tf
 
+# Load environment variables
 load_dotenv()
 
-MODEL_PATH = os.getenv("MODEL_PATH")
-DRIVE_FILE_ID = os.getenv("DRIVE_FILE_ID")
+MODEL_PATH = os.getenv("MODEL_PATH")  # Example: "app/model/efficientnetb0_model.keras"
+DRIVE_FILE_ID = os.getenv("DRIVE_FILE_ID")  # Example: "1x6C0p5cLsTfQdfsz-D5FL9XNt6lsAvfd"
+
+# Ensure model directory exists
+MODEL_DIR = os.path.dirname(MODEL_PATH)
 os.makedirs(MODEL_DIR, exist_ok=True)
 
+# Download model if not present
 if not os.path.exists(MODEL_PATH):
+    print("Downloading model from Google Drive...")
     gdown.download(f"https://drive.google.com/uc?id={DRIVE_FILE_ID}", MODEL_PATH, quiet=False)
 
+# Load the trained model
 MODEL = tf.keras.models.load_model(MODEL_PATH)
+
 
 CLASS_NAMES = [
     "Apple___Apple_scab",
